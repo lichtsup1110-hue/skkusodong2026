@@ -19,17 +19,17 @@
             font-family: 'Press Start 2P', 'DungGeunMo', monospace;
         }
         .pixel-box {
-            border: 4px solid #ffffff;
-            box-shadow: 4px 4px 0px #000000;
+            border: 4px solid #78350f;
+            box-shadow: 4px 4px 0px #451a03;
         }
         @media (min-width: 640px) {
             .pixel-box {
-                box-shadow: 5px 5px 0px #000000;
+                box-shadow: 5px 5px 0px #451a03;
             }
         }
         .pixel-btn {
-            border: 3px solid #ffffff;
-            box-shadow: 3px 3px 0px #000000;
+            border: 3px solid #451a03;
+            box-shadow: 3px 3px 0px #451a03;
             transition: all 0.08s ease;
             cursor: pointer;
             user-select: none;
@@ -40,14 +40,14 @@
         }
         .pixel-btn:hover {
             transform: translate(-2px, -2px);
-            box-shadow: 5px 5px 0px #000000;
+            box-shadow: 5px 5px 0px #451a03;
         }
         .pixel-btn:active {
             transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0px #000000;
+            box-shadow: 1px 1px 0px #451a03;
         }
         .pixel-btn:focus-visible, select:focus-visible {
-            outline: 3px solid #ffbe0b !important;
+            outline: 3px solid #d97706 !important;
             outline-offset: 2px;
         }
         /* Screen Reader Only Utility */
@@ -62,12 +62,13 @@
             white-space: nowrap;
             border: 0;
         }
-        /* Leaf Fall Animation */
+        /* Ginkgo & Autumn Leaf Fall Animation */
         @keyframes leafDrift {
             0% { transform: translate(0, -20px) rotate(0deg); opacity: 0; }
-            15% { opacity: 0.85; }
-            85% { opacity: 0.85; }
-            100% { transform: translate(50px, 105vh) rotate(360deg); opacity: 0; }
+            15% { opacity: 0.95; }
+            50% { transform: translate(35px, 50vh) rotate(180deg); }
+            85% { opacity: 0.95; }
+            100% { transform: translate(-15px, 105vh) rotate(360deg); opacity: 0; }
         }
         .falling-leaf {
             position: fixed;
@@ -122,47 +123,47 @@
         }
     </style>
 </head>
-<body class="bg-[#24131e] text-white min-h-screen flex flex-col justify-between font-['DungGeunMo',sans-serif] selection:bg-[#ffbe0b] selection:text-black overflow-x-hidden">
+<body class="bg-gradient-to-b from-[#fef9c3] via-[#fde68a] to-[#fed7aa] text-[#451a03] min-h-screen flex flex-col justify-between font-['DungGeunMo',sans-serif] selection:bg-[#f59e0b] selection:text-white overflow-x-hidden">
 
     <!-- Screen Reader Live Region for Announcements -->
     <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
 
-    <!-- Leaf Falling Background Container (Hidden for assistive tech) -->
+    <!-- Ginkgo Leaf Falling Background Container (Hidden for assistive tech) -->
     <div id="leaves-container" aria-hidden="true"></div>
 
-    <!-- Celebration Confetti Canvas -->
+    <!-- Celebration Ginkgo Leaves Canvas -->
     <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50 hidden" aria-hidden="true"></canvas>
 
     <!-- Custom Modal Message Box -->
-    <div id="custom-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
-        <div class="pixel-box bg-[#331832] p-5 sm:p-6 max-w-sm w-full text-center">
-            <h3 class="pixel-font text-xs sm:text-sm text-[#ffbe0b] mb-3" id="modal-title">알림</h3>
-            <p id="modal-desc" class="text-xs sm:text-sm text-gray-200 mb-5 leading-relaxed"></p>
-            <button onclick="closeModal()" class="pixel-btn bg-[#00f5d4] text-black font-bold px-6 py-2 text-xs sm:text-sm w-full sm:w-auto">확인</button>
+    <div id="custom-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+        <div class="pixel-box bg-[#fffbeb] p-5 sm:p-6 max-w-sm w-full text-center">
+            <h3 class="pixel-font text-xs sm:text-sm text-[#b45309] mb-3" id="modal-title">알림</h3>
+            <p id="modal-desc" class="text-xs sm:text-sm text-[#451a03] mb-5 leading-relaxed"></p>
+            <button onclick="closeModal()" class="pixel-btn bg-[#fbbf24] hover:bg-[#f59e0b] text-[#451a03] font-bold px-6 py-2 text-xs sm:text-sm w-full sm:w-auto">확인</button>
         </div>
     </div>
 
     <!-- Top Navigation Bar -->
-    <header class="bg-[#381630] border-b-4 border-white p-2.5 sm:p-3 z-30 shadow-md">
+    <header class="bg-[#fffbeb]/95 border-b-4 border-[#78350f] p-2.5 sm:p-3 z-30 shadow-md">
         <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
             <div class="flex items-center gap-2">
-                <span class="text-xl sm:text-2xl" aria-hidden="true">🍁</span>
                 <span class="text-xl sm:text-2xl" aria-hidden="true">🍂</span>
+                <span class="text-xl sm:text-2xl" aria-hidden="true">🍁</span>
                 <div>
-                    <h1 class="pixel-font text-xs sm:text-sm text-[#ffbe0b] tracking-wide" id="nav-title">가을 산책로 점프 퀴즈</h1>
-                    <p class="text-[10px] text-pink-300">성균관대학교 모꼬지 X 이퀄 X 정정헌</p>
+                    <h1 class="pixel-font text-xs sm:text-sm text-[#b45309] tracking-wide" id="nav-title">가을 산책로 점프 퀴즈</h1>
+                    <p class="text-[10px] text-[#92400e] font-bold">성균관대학교 모꼬지 X 이퀄 X 정정헌</p>
                 </div>
             </div>
             
             <!-- Language Selector Dropdown (KO, EN, ZH) & Audio Toggle -->
             <div class="flex items-center gap-1.5 sm:gap-2">
-                <label for="lang-select" class="text-[11px] sm:text-xs text-yellow-300 font-bold whitespace-nowrap">🌐 언어:</label>
-                <select id="lang-select" onchange="changeLanguage(this.value)" aria-label="언어 선택 (Language)" class="bg-[#1f0d1b] border-2 border-white px-1.5 sm:px-2 py-1 text-xs text-white focus:outline-none cursor-pointer rounded-none min-h-[38px]">
+                <label for="lang-select" class="text-[11px] sm:text-xs text-[#92400e] font-bold whitespace-nowrap">🌐 언어:</label>
+                <select id="lang-select" onchange="changeLanguage(this.value)" aria-label="언어 선택 (Language)" class="bg-[#fef3c7] border-2 border-[#78350f] px-1.5 sm:px-2 py-1 text-xs text-[#451a03] font-bold focus:outline-none cursor-pointer rounded-none min-h-[38px]">
                     <option value="ko" selected>한국어 (KO)</option>
                     <option value="en">English (EN)</option>
                     <option value="zh">中文 (ZH)</option>
                 </select>
-                <button onclick="toggleAudio()" id="audio-toggle-btn" aria-label="배경음 및 효과음 토글 (현재 켜짐)" class="pixel-btn bg-[#ff006e] text-white px-2.5 py-1 text-xs sm:text-sm ml-1 min-h-[38px] min-w-[38px]">🔊</button>
+                <button onclick="toggleAudio()" id="audio-toggle-btn" aria-label="배경음 및 효과음 토글 (현재 켜짐)" class="pixel-btn bg-[#ea580c] text-white px-2.5 py-1 text-xs sm:text-sm ml-1 min-h-[38px] min-w-[38px]">🔊</button>
             </div>
         </div>
     </header>
@@ -172,35 +173,35 @@
 
         <!-- SCREEN 0: START / TITLE SCREEN -->
         <section id="screen-start" class="w-full flex flex-col items-center text-center" aria-labelledby="t-start-title">
-            <div class="pixel-box bg-[#32132e] p-5 sm:p-8 max-w-2xl w-full flex flex-col items-center shadow-2xl relative overflow-hidden">
+            <div class="pixel-box bg-[#fffbeb]/95 p-5 sm:p-8 max-w-2xl w-full flex flex-col items-center shadow-xl relative overflow-hidden">
                 <!-- Decorative Corner Leaves -->
-                <div class="absolute top-2 left-2 text-xl sm:text-2xl animate-pulse" aria-hidden="true">🍁</div>
-                <div class="absolute top-2 right-2 text-xl sm:text-2xl animate-pulse" aria-hidden="true">🍂</div>
-                <div class="absolute bottom-2 left-2 text-lg sm:text-xl opacity-75" aria-hidden="true">🌕</div>
-                <div class="absolute bottom-2 right-2 text-lg sm:text-xl opacity-75" aria-hidden="true">🍃</div>
+                <div class="absolute top-2 left-2 text-xl sm:text-2xl animate-pulse" aria-hidden="true">🍂</div>
+                <div class="absolute top-2 right-2 text-xl sm:text-2xl animate-pulse" aria-hidden="true">🍁</div>
+                <div class="absolute bottom-2 left-2 text-lg sm:text-xl opacity-90" aria-hidden="true">☀️</div>
+                <div class="absolute bottom-2 right-2 text-lg sm:text-xl opacity-90" aria-hidden="true">🍃</div>
 
                 <!-- Organizer Ribbon (모꼬지 X 이퀄 X 정정헌) -->
-                <div class="bg-[#5a1e48] border-2 border-white px-3 py-1 text-[11px] sm:text-xs text-yellow-300 font-bold mb-3 shadow">
+                <div class="bg-[#fef3c7] border-2 border-[#78350f] px-3 py-1 text-[11px] sm:text-xs text-[#92400e] font-bold mb-3 shadow-sm">
                     성균관대학교 모꼬지 X 이퀄(EQUAL) X 정정헌
                 </div>
 
                 <!-- Main Title -->
-                <h2 class="pixel-font text-base sm:text-2xl text-[#ffbe0b] leading-tight mb-2 drop-shadow-[2px_2px_0_#000]" id="t-start-title" tabindex="-1">
+                <h2 class="pixel-font text-base sm:text-2xl text-[#b45309] leading-tight mb-2 drop-shadow-[1px_1px_0_#fde68a]" id="t-start-title" tabindex="-1">
                     모꼬지 X 이퀄 X 정정헌과 함께 하는 가을 산책
                 </h2>
-                <p class="text-xs sm:text-sm text-pink-200 mb-5 sm:mb-6 font-medium leading-relaxed" id="t-start-sub">
-                    🍁 단풍나무와 은행잎 산책로를 퐁퐁 뛰어오르는 픽셀 점프 퀴즈 어드벤처 🍂
+                <p class="text-xs sm:text-sm text-[#9a3412] mb-5 sm:mb-6 font-bold leading-relaxed" id="t-start-sub">
+                    🍂 은행잎과 단풍나무 산책로를 퐁퐁 뛰어오르는 픽셀 점프 퀴즈 어드벤처 🍁
                 </p>
 
                 <!-- Companions Preview Showcase Box -->
-                <div class="bg-[#1e0a1b] border-2 border-purple-500 p-3 sm:p-4 rounded w-full mb-6 flex flex-col items-center">
-                    <div class="text-[11px] sm:text-xs text-yellow-300 mb-2 font-mono flex items-center gap-1">
+                <div class="bg-[#fef3c7] border-2 border-[#d97706] p-3 sm:p-4 rounded w-full mb-6 flex flex-col items-center">
+                    <div class="text-[11px] sm:text-xs text-[#b45309] font-bold mb-2 font-mono flex items-center gap-1">
                         <span>🐾 산책을 함께할 8명의 친구들</span>
                     </div>
                     <!-- Cute Mini Sprites Preview Row -->
                     <div class="flex flex-wrap justify-center items-center gap-2 py-1 text-lg sm:text-xl" role="region" aria-label="산책 메이트 미리보기">
-                        <span title="율전이" aria-label="율전이">🧢</span>
-                        <span title="명륜이" aria-label="명륜이">🌸</span>
+                        <span title="율전이" aria-label="율전이">🌼</span>
+                        <span title="명륜이" aria-label="명륜이">🧥</span>
                         <span title="인의" aria-label="인의">🏳️‍🌈</span>
                         <span title="예지" aria-label="예지">📚</span>
                         <span title="수기" aria-label="수기">♿</span>
@@ -208,16 +209,16 @@
                         <span title="인문이" aria-label="인문이">🐕</span>
                         <span title="수선이" aria-label="수선이">🐈‍⬛</span>
                     </div>
-                    <p class="text-[11px] sm:text-xs text-gray-300 mt-2 leading-relaxed" id="t-start-desc">
+                    <p class="text-[11px] sm:text-xs text-[#78350f] mt-2 leading-relaxed font-medium" id="t-start-desc">
                         장애, 여성, 교차성의 가치와 역사를 배우며 가을 디딤돌을 밟고 정상에 도전하세요!
                     </p>
                 </div>
 
                 <!-- Start Button (Accessible Touch Target) -->
-                <button onclick="startFromTitle()" class="pixel-btn bg-[#00f5d4] hover:bg-[#00d8bc] text-black font-extrabold px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-base flex items-center gap-2 w-full sm:w-auto transform active:scale-95" aria-label="산책 시작하기, 캐릭터 선택 화면으로 이동">
-                    <span aria-hidden="true">🍁</span>
-                    <span id="t-start-btn">산책 시작하기 (START) ▶</span>
+                <button onclick="startFromTitle()" class="pixel-btn bg-[#fbbf24] hover:bg-[#f59e0b] text-[#451a03] font-extrabold px-8 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-base flex items-center gap-2 w-full sm:w-auto transform active:scale-95" aria-label="산책 시작하기, 캐릭터 선택 화면으로 이동">
                     <span aria-hidden="true">🍂</span>
+                    <span id="t-start-btn">산책 시작하기 (START) ▶</span>
+                    <span aria-hidden="true">🍁</span>
                 </button>
             </div>
         </section>
@@ -225,32 +226,32 @@
         <!-- SCREEN 1: CHARACTER SELECTION WITH STATS -->
         <section id="screen-character" class="w-full hidden flex flex-col items-center" aria-labelledby="t-choose-mate">
             <div class="text-center mb-4 sm:mb-6">
-                <span class="bg-[#5c2040] text-yellow-300 px-3 py-1 text-[11px] sm:text-xs border border-yellow-300 rounded-full mb-2 inline-block font-mono">STEP 1</span>
-                <h2 class="pixel-font text-base sm:text-lg text-[#ffbe0b] mb-1" id="t-choose-mate" tabindex="-1">산책메이트 캐릭터 선택</h2>
-                <p class="text-xs sm:text-sm text-gray-300" id="t-choose-desc">단풍나무와 은행잎 길을 퐁퐁 뛰어오를 친구를 골라보세요!</p>
+                <span class="bg-[#ea580c] text-white px-3 py-1 text-[11px] sm:text-xs border-2 border-[#451a03] rounded-full mb-2 inline-block font-mono font-bold">STEP 1</span>
+                <h2 class="pixel-font text-base sm:text-lg text-[#9a3412] mb-1" id="t-choose-mate" tabindex="-1">산책메이트 캐릭터 선택</h2>
+                <p class="text-xs sm:text-sm text-[#78350f] font-bold" id="t-choose-desc">은행잎과 단풍나무 길을 퐁퐁 뛰어오를 친구를 골라보세요!</p>
             </div>
 
             <!-- 8 Characters Grid (Mobile 2 cols, Desktop 4 cols) -->
             <div id="character-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 w-full mb-4 sm:mb-6" role="radiogroup" aria-label="산책 메이트 선택"></div>
 
             <!-- Detailed Selected Character Info Card -->
-            <div id="selected-char-detail" class="pixel-box bg-[#30162c] p-3.5 sm:p-4 w-full max-w-lg mb-5 flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4" role="region" aria-live="polite" aria-label="선택된 캐릭터 상세 정보">
-                <div id="detail-avatar" class="w-16 h-16 sm:w-20 sm:h-20 bg-[#421d3c] border-2 border-white flex items-center justify-center relative p-1 shrink-0" aria-hidden="true"></div>
+            <div id="selected-char-detail" class="pixel-box bg-[#fffbeb] p-3.5 sm:p-4 w-full max-w-lg mb-5 flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4" role="region" aria-live="polite" aria-label="선택된 캐릭터 상세 정보">
+                <div id="detail-avatar" class="w-16 h-16 sm:w-20 sm:h-20 bg-[#fef3c7] border-2 border-[#78350f] flex items-center justify-center relative p-1 shrink-0" aria-hidden="true"></div>
                 <div class="flex-grow text-center sm:text-left w-full">
                     <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 mb-1">
-                        <span id="detail-name" class="pixel-font text-xs sm:text-sm text-[#00f5d4] font-bold">율전이</span>
-                        <span id="detail-identity" class="text-[10px] sm:text-xs bg-[#5a2448] px-2 py-0.5 border border-pink-300 text-pink-200"></span>
+                        <span id="detail-name" class="pixel-font text-xs sm:text-sm text-[#b45309] font-bold">율전이</span>
+                        <span id="detail-identity" class="text-[10px] sm:text-xs bg-[#fde68a] px-2 py-0.5 border border-[#78350f] text-[#78350f] font-bold"></span>
                     </div>
-                    <p id="detail-desc" class="text-[11px] sm:text-xs text-gray-300 mb-2 leading-relaxed"></p>
-                    <div class="bg-[#1b0a19] p-2 border border-purple-400 text-[10px] sm:text-[11px] text-yellow-300 font-mono space-y-1" id="detail-stats"></div>
+                    <p id="detail-desc" class="text-[11px] sm:text-xs text-[#451a03] mb-2 leading-relaxed"></p>
+                    <div class="bg-[#fef3c7] p-2 border border-[#d97706] text-[10px] sm:text-[11px] text-[#92400e] font-bold font-mono space-y-1" id="detail-stats"></div>
                 </div>
             </div>
 
             <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto">
-                <button onclick="backToStart()" class="pixel-btn bg-gray-700 hover:bg-gray-600 text-white px-4 sm:px-5 py-2.5 text-xs flex-1 sm:flex-initial" aria-label="처음 화면으로 돌아가기">
+                <button onclick="backToStart()" class="pixel-btn bg-[#e7e5e4] hover:bg-[#d6d3d1] text-[#451a03] font-bold px-4 sm:px-5 py-2.5 text-xs flex-1 sm:flex-initial" aria-label="처음 화면으로 돌아가기">
                     ◀ <span id="t-back-start">처음 화면으로</span>
                 </button>
-                <button onclick="goToCategorySelect()" class="pixel-btn bg-[#ffbe0b] hover:bg-[#e0a800] text-black font-bold px-6 sm:px-8 py-2.5 text-xs sm:text-sm flex-1 sm:flex-initial" aria-label="주제 선택하기 화면으로 이동">
+                <button onclick="goToCategorySelect()" class="pixel-btn bg-[#fbbf24] hover:bg-[#f59e0b] text-[#451a03] font-bold px-6 sm:px-8 py-2.5 text-xs sm:text-sm flex-1 sm:flex-initial" aria-label="주제 선택하기 화면으로 이동">
                     <span id="t-next-step">주제 선택하기 ▶</span>
                 </button>
             </div>
@@ -259,33 +260,33 @@
         <!-- SCREEN 2: TOPIC SELECTION (장애 / 여성 / 교차성) -->
         <section id="screen-category" class="w-full hidden flex flex-col items-center" aria-labelledby="t-choose-topic">
             <div class="text-center mb-4 sm:mb-6">
-                <span class="bg-[#5c2040] text-yellow-300 px-3 py-1 text-[11px] sm:text-xs border border-yellow-300 rounded-full mb-2 inline-block font-mono">STEP 2</span>
-                <h2 class="pixel-font text-base sm:text-lg text-[#ffbe0b] mb-1" id="t-choose-topic" tabindex="-1">도전할 퀴즈 주제 선택</h2>
-                <p class="text-xs sm:text-sm text-gray-300" id="t-topic-desc">풀고 싶은 영역을 선택하면 인권 상식 및 역사 O/X 퀴즈 3문제가 시작됩니다!</p>
+                <span class="bg-[#ea580c] text-white px-3 py-1 text-[11px] sm:text-xs border-2 border-[#451a03] rounded-full mb-2 inline-block font-mono font-bold">STEP 2</span>
+                <h2 class="pixel-font text-base sm:text-lg text-[#9a3412] mb-1" id="t-choose-topic" tabindex="-1">도전할 퀴즈 주제 선택</h2>
+                <p class="text-xs sm:text-sm text-[#78350f] font-bold" id="t-topic-desc">풀고 싶은 영역을 선택하면 인권 상식 및 역사 O/X 퀴즈 3문제가 시작됩니다!</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full max-w-2xl mb-6 sm:mb-8" role="region" aria-label="퀴즈 주제 목록">
                 <!-- Topic 1: Disability -->
-                <button onclick="startQuiz('disability')" class="pixel-box bg-[#3a1a36] hover:bg-[#4a2245] p-4 sm:p-5 cursor-pointer text-center group transition text-left sm:text-center w-full" aria-label="장애 영역: 유니버설 에티켓 및 이동권 운동 역사 3문제">
+                <button onclick="startQuiz('disability')" class="pixel-box bg-[#fffbeb] hover:bg-[#fef3c7] p-4 sm:p-5 cursor-pointer text-center group transition text-left sm:text-center w-full" aria-label="장애 영역: 유니버설 에티켓 및 이동권 운동 역사 3문제">
                     <div class="text-3xl sm:text-4xl mb-2 sm:mb-3 group-hover:scale-110 transition" aria-hidden="true">♿✨</div>
-                    <h3 class="pixel-font text-xs sm:text-sm text-[#00f5d4] mb-1.5" id="t-cat-disability">장애 (Disability)</h3>
-                    <p class="text-[11px] sm:text-xs text-gray-300" id="t-cat-disability-desc">유니버설 에티켓 & 이동권 운동 역사 3문제</p>
+                    <h3 class="pixel-font text-xs sm:text-sm text-[#0f766e] mb-1.5" id="t-cat-disability">장애 (Disability)</h3>
+                    <p class="text-[11px] sm:text-xs text-[#78350f] font-medium" id="t-cat-disability-desc">유니버설 에티켓 & 이동권 운동 역사 3문제</p>
                 </button>
                 <!-- Topic 2: Women -->
-                <button onclick="startQuiz('women')" class="pixel-box bg-[#3a1a36] hover:bg-[#4a2245] p-4 sm:p-5 cursor-pointer text-center group transition text-left sm:text-center w-full" aria-label="여성 영역: 성평등 상식 및 여성의 날 투쟁 역사 3문제">
+                <button onclick="startQuiz('women')" class="pixel-box bg-[#fffbeb] hover:bg-[#fef3c7] p-4 sm:p-5 cursor-pointer text-center group transition text-left sm:text-center w-full" aria-label="여성 영역: 성평등 상식 및 여성의 날 투쟁 역사 3문제">
                     <div class="text-3xl sm:text-4xl mb-2 sm:mb-3 group-hover:scale-110 transition" aria-hidden="true">🌸🌿</div>
-                    <h3 class="pixel-font text-xs sm:text-sm text-[#ff70a6] mb-1.5" id="t-cat-women">여성 (Women)</h3>
-                    <p class="text-[11px] sm:text-xs text-gray-300" id="t-cat-women-desc">성평등 상식 & 여성의 날 투쟁 역사 3문제</p>
+                    <h3 class="pixel-font text-xs sm:text-sm text-[#be185d] mb-1.5" id="t-cat-women">여성 (Women)</h3>
+                    <p class="text-[11px] sm:text-xs text-[#78350f] font-medium" id="t-cat-women-desc">성평등 상식 & 여성의 날 투쟁 역사 3문제</p>
                 </button>
                 <!-- Topic 3: Intersectionality -->
-                <button onclick="startQuiz('intersectionality')" class="pixel-box bg-[#3a1a36] hover:bg-[#4a2245] p-4 sm:p-5 cursor-pointer text-center group transition text-left sm:text-center w-full" aria-label="교차성 영역: 정체성 포용 및 교차성 이론 역사 3문제">
+                <button onclick="startQuiz('intersectionality')" class="pixel-box bg-[#fffbeb] hover:bg-[#fef3c7] p-4 sm:p-5 cursor-pointer text-center group transition text-left sm:text-center w-full" aria-label="교차성 영역: 정체성 포용 및 교차성 이론 역사 3문제">
                     <div class="text-3xl sm:text-4xl mb-2 sm:mb-3 group-hover:scale-110 transition" aria-hidden="true">🌈🤝</div>
-                    <h3 class="pixel-font text-xs sm:text-sm text-[#ffbe0b] mb-1.5" id="t-cat-inter">교차성 (Intersectionality)</h3>
-                    <p class="text-[11px] sm:text-xs text-gray-300" id="t-cat-inter-desc">정체성 포용 & 교차성 이론 역사 3문제</p>
+                    <h3 class="pixel-font text-xs sm:text-sm text-[#b45309] mb-1.5" id="t-cat-inter">교차성 (Intersectionality)</h3>
+                    <p class="text-[11px] sm:text-xs text-[#78350f] font-medium" id="t-cat-inter-desc">정체성 포용 & 교차성 이론 역사 3문제</p>
                 </button>
             </div>
 
-            <button onclick="backToCharacterSelect()" class="pixel-btn bg-gray-700 hover:bg-gray-600 text-white px-6 py-2.5 text-xs" aria-label="이전 화면으로 돌아가서 캐릭터 다시 고르기">
+            <button onclick="backToCharacterSelect()" class="pixel-btn bg-[#e7e5e4] hover:bg-[#d6d3d1] text-[#451a03] font-bold px-6 py-2.5 text-xs" aria-label="이전 화면으로 돌아가서 캐릭터 다시 고르기">
                 ◀ <span id="t-back-char">캐릭터 다시 고르기</span>
             </button>
         </section>
@@ -293,69 +294,69 @@
         <!-- SCREEN 3: JUMP QUIZ GAMEPLAY SCREEN -->
         <section id="screen-game" class="w-full hidden flex flex-col items-center" aria-labelledby="quiz-question-number">
             
-            <!-- Jump Stage Container (Sky, Steps, Leaves) -->
-            <div class="pixel-box bg-gradient-to-b from-[#2b1055] via-[#461b42] to-[#251025] w-full max-w-xl h-60 sm:h-72 relative overflow-hidden mb-4 border-4 border-white flex flex-col justify-between p-3" role="region" aria-label="가을 산책로 점프 애니메이션 스테이지">
+            <!-- Jump Stage Container (Bright Sunny Autumn Sky, Steps, Leaves) -->
+            <div class="pixel-box bg-gradient-to-b from-[#bae6fd] via-[#fef08a] to-[#fed7aa] w-full max-w-xl h-60 sm:h-72 relative overflow-hidden mb-4 flex flex-col justify-between p-3" role="region" aria-label="가을 산책로 점프 애니메이션 스테이지">
                 
-                <div class="absolute top-3 right-4 text-2xl sm:text-3xl opacity-80" aria-hidden="true">🍁</div>
-                <div class="absolute top-8 left-6 text-xl sm:text-2xl opacity-75" aria-hidden="true">🍂</div>
-                <div class="absolute top-2 left-1/3 text-base sm:text-lg text-yellow-300" aria-hidden="true">🌕</div>
+                <div class="absolute top-3 right-4 text-2xl sm:text-3xl opacity-90" aria-hidden="true">🍂</div>
+                <div class="absolute top-8 left-6 text-xl sm:text-2xl opacity-85" aria-hidden="true">🍁</div>
+                <div class="absolute top-2 left-1/3 text-lg sm:text-xl" aria-hidden="true">☀️</div>
 
                 <!-- Stage Progress Header -->
                 <div class="flex justify-between items-center z-10 text-xs" role="status">
-                    <span class="bg-black/70 px-2.5 py-1 border border-white text-yellow-300 font-mono" id="quiz-badge">STAGE 1/3</span>
-                    <span class="bg-black/70 px-2.5 py-1 border border-white text-[#00f5d4] font-mono">SCORE: <span id="game-score">0</span></span>
+                    <span class="bg-[#fffbeb]/95 px-2.5 py-1 border-2 border-[#78350f] text-[#b45309] font-mono font-bold" id="quiz-badge">STAGE 1/3</span>
+                    <span class="bg-[#fffbeb]/95 px-2.5 py-1 border-2 border-[#78350f] text-[#0f766e] font-mono font-bold">SCORE: <span id="game-score">0</span></span>
                 </div>
 
                 <!-- 3 Floating Platforms -->
                 <div class="relative w-full h-36 sm:h-44 z-10" aria-hidden="true">
-                    <div class="absolute top-2 right-6 sm:right-12 w-24 sm:w-28 h-5 sm:h-6 bg-[#d97706] border-2 border-white flex items-center justify-center text-[9px] sm:text-[10px] text-yellow-200 shadow-md">
-                        🍁 은행 정상 🏆
+                    <div class="absolute top-2 right-6 sm:right-12 w-24 sm:w-28 h-5 sm:h-6 bg-[#facc15] border-2 border-[#451a03] flex items-center justify-center text-[9px] sm:text-[10px] text-[#451a03] font-bold shadow">
+                        🍂 은행 정상 🏆
                     </div>
-                    <div class="absolute top-14 sm:top-16 left-6 sm:left-12 w-24 sm:w-28 h-5 sm:h-6 bg-[#b45309] border-2 border-white flex items-center justify-center text-[9px] sm:text-[10px] text-orange-200 shadow-md">
-                        🍂 단풍 쉼터 (2층)
+                    <div class="absolute top-14 sm:top-16 left-6 sm:left-12 w-24 sm:w-28 h-5 sm:h-6 bg-[#f59e0b] border-2 border-[#451a03] flex items-center justify-center text-[9px] sm:text-[10px] text-[#451a03] font-bold shadow">
+                        🍁 단풍 쉼터 (2층)
                     </div>
-                    <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 sm:w-36 h-5 sm:h-6 bg-[#78350f] border-2 border-white flex items-center justify-center text-[9px] sm:text-[10px] text-amber-200 shadow-md">
+                    <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 sm:w-36 h-5 sm:h-6 bg-[#b45309] border-2 border-[#451a03] flex items-center justify-center text-[9px] sm:text-[10px] text-[#fffbeb] font-bold shadow">
                         🌿 산책로 입구 (1층)
                     </div>
 
                     <!-- JUMPING CHARACTER SPRITE CONTAINER -->
                     <div id="jumping-character-avatar" class="absolute bottom-6 sm:bottom-7 left-1/2 -translate-x-1/2 z-20" style="transition: left 0.65s cubic-bezier(0.3, 0.1, 0.3, 1), bottom 0.65s cubic-bezier(0.2, 0.9, 0.3, 1);">
                         <div id="char-inner-sprite" class="char-idle flex flex-col items-center relative"></div>
-                        <div id="jump-dust" class="hidden absolute -bottom-2 left-1/2 -translate-x-1/2 text-xs dust-effect pointer-events-none">✨🍁✨</div>
+                        <div id="jump-dust" class="hidden absolute -bottom-2 left-1/2 -translate-x-1/2 text-xs dust-effect pointer-events-none">✨🍂✨</div>
                     </div>
                 </div>
 
-                <div class="text-[10px] sm:text-[11px] text-center text-yellow-200 z-10 bg-black/50 py-1 border-t border-purple-900" id="jump-status-text" role="status">
-                    문제를 맞히면 위쪽 단풍 디딤돌로 퐁퐁 뛰어오릅니다!
+                <div class="text-[10px] sm:text-[11px] text-center text-[#78350f] font-bold z-10 bg-[#fffbeb]/90 py-1 border-t-2 border-[#d97706]" id="jump-status-text" role="status">
+                    문제를 맞히면 위쪽 은행잎 디딤돌로 퐁퐁 뛰어오릅니다!
                 </div>
             </div>
 
             <!-- Quiz Question Card -->
-            <div class="pixel-box bg-[#31162e] p-4 sm:p-5 w-full max-w-xl">
-                <div class="flex justify-between items-center mb-2 border-b border-purple-800 pb-2">
-                    <span id="quiz-question-number" class="pixel-font text-xs sm:text-sm text-[#ffbe0b]" tabindex="-1">QUESTION 1</span>
-                    <span id="quiz-topic-title" class="text-xs text-pink-300">장애 배려 상식</span>
+            <div class="pixel-box bg-[#fffbeb] p-4 sm:p-5 w-full max-w-xl">
+                <div class="flex justify-between items-center mb-2 border-b-2 border-[#fde68a] pb-2">
+                    <span id="quiz-question-number" class="pixel-font text-xs sm:text-sm text-[#b45309]" tabindex="-1">QUESTION 1</span>
+                    <span id="quiz-topic-title" class="text-xs text-[#9a3412] font-bold">장애 배려 상식</span>
                 </div>
 
-                <h3 id="quiz-question-text" class="text-sm sm:text-base font-bold my-3 sm:my-4 text-white leading-relaxed min-h-[48px] flex items-center" role="heading" aria-level="3"></h3>
+                <h3 id="quiz-question-text" class="text-sm sm:text-base font-bold my-3 sm:my-4 text-[#451a03] leading-relaxed min-h-[48px] flex items-center" role="heading" aria-level="3"></h3>
 
                 <!-- Big O / X Decision Buttons (Touch Accessible 48px+) -->
                 <div id="ox-buttons-box" class="grid grid-cols-2 gap-3 sm:gap-4 mt-3 sm:mt-4" role="group" aria-label="정답 선택">
-                    <button onclick="submitAnswer(true)" class="pixel-btn bg-[#2a9d8f] hover:bg-[#21867a] active:bg-[#1b6b62] text-white py-3.5 sm:py-4 text-2xl sm:text-3xl font-black flex flex-col items-center justify-center gap-1 w-full" aria-label="O, 그렇다 (참) 선택">
+                    <button onclick="submitAnswer(true)" class="pixel-btn bg-[#10b981] hover:bg-[#059669] active:bg-[#047857] text-white py-3.5 sm:py-4 text-2xl sm:text-3xl font-black flex flex-col items-center justify-center gap-1 w-full" aria-label="O, 그렇다 (참) 선택">
                         <span aria-hidden="true">⭕</span>
                         <span class="text-xs pixel-font font-bold">O (TRUE)</span>
                     </button>
-                    <button onclick="submitAnswer(false)" class="pixel-btn bg-[#e76f51] hover:bg-[#d45d3f] active:bg-[#ba4c31] text-white py-3.5 sm:py-4 text-2xl sm:text-3xl font-black flex flex-col items-center justify-center gap-1 w-full" aria-label="X, 아니다 (거짓) 선택">
+                    <button onclick="submitAnswer(false)" class="pixel-btn bg-[#f97316] hover:bg-[#ea580c] active:bg-[#c2410c] text-white py-3.5 sm:py-4 text-2xl sm:text-3xl font-black flex flex-col items-center justify-center gap-1 w-full" aria-label="X, 아니다 (거짓) 선택">
                         <span aria-hidden="true">❌</span>
                         <span class="text-xs pixel-font font-bold">X (FALSE)</span>
                     </button>
                 </div>
 
                 <!-- Answer Feedback Box -->
-                <div id="quiz-feedback-box" class="hidden mt-4 p-3.5 border-2 border-white bg-[#1a0a19]" role="region" aria-live="polite" aria-label="퀴즈 채점 결과 및 해설">
+                <div id="quiz-feedback-box" class="hidden mt-4 p-3.5 border-2 border-[#78350f] bg-[#fef3c7]" role="region" aria-live="polite" aria-label="퀴즈 채점 결과 및 해설">
                     <div id="feedback-verdict" class="pixel-font text-xs sm:text-sm font-bold mb-1.5"></div>
-                    <p id="feedback-explanation" class="text-xs sm:text-sm text-gray-200 mb-3 leading-relaxed"></p>
-                    <button id="next-quiz-btn" onclick="nextQuestion()" class="pixel-btn bg-[#00f5d4] hover:bg-[#00d8bc] text-black font-bold px-6 py-2.5 text-xs sm:text-sm w-full sm:w-auto" aria-label="다음 단계로 이동">
+                    <p id="feedback-explanation" class="text-xs sm:text-sm text-[#451a03] mb-3 leading-relaxed"></p>
+                    <button id="next-quiz-btn" onclick="nextQuestion()" class="pixel-btn bg-[#fbbf24] hover:bg-[#f59e0b] text-[#451a03] font-bold px-6 py-2.5 text-xs sm:text-sm w-full sm:w-auto" aria-label="다음 단계로 이동">
                         <span id="t-next-quiz">다음 단계로 이동 ▶</span>
                     </button>
                 </div>
@@ -367,44 +368,44 @@
         <section id="screen-result" class="w-full hidden flex flex-col items-center text-center" aria-labelledby="t-congrats-title">
             
             <div class="mb-3">
-                <div class="text-4xl sm:text-5xl mb-2 animate-bounce" aria-hidden="true">🍁🎺🎉</div>
-                <h2 class="pixel-font text-base sm:text-2xl text-[#ffbe0b] drop-shadow-[2px_2px_0_#000]" id="t-congrats-title" tabindex="-1">
-                    팡파레!! 완주 축하합니다!
+                <div class="text-4xl sm:text-5xl mb-2 animate-bounce" aria-hidden="true">🍂🍁🏆</div>
+                <h2 class="pixel-font text-base sm:text-2xl text-[#b45309] drop-shadow-[1px_1px_0_#fde68a]" id="t-congrats-title" tabindex="-1">
+                    WIN!
                 </h2>
                 <!-- Collaborative Credit (모꼬지 X 이퀄 X 정정헌) -->
-                <div class="inline-block bg-[#5c1d4d] border-2 border-white px-3 sm:px-4 py-1 sm:py-1.5 mt-2 text-xs sm:text-sm font-bold text-yellow-300 shadow-md">
+                <div class="inline-block bg-[#fffbeb] border-2 border-[#78350f] px-3 sm:px-4 py-1 sm:py-1.5 mt-2 text-xs sm:text-sm font-bold text-[#92400e] shadow-sm">
                     성균관대학교 모꼬지 X 이퀄 X 정정헌
                 </div>
             </div>
 
             <!-- Dynamic Date Display -->
-            <div class="mb-4 inline-flex items-center gap-2 bg-[#1b0a19] border-2 border-[#00f5d4] px-4 py-1.5 shadow-md" role="status">
-                <span class="text-xs text-[#00f5d4] pixel-font font-bold">완주!</span>
-                <span id="finish-date-display" class="text-xs text-yellow-300 font-mono font-bold">2026. 11. 04.</span>
+            <div class="mb-4 inline-flex items-center gap-2 bg-[#fffbeb] border-2 border-[#d97706] px-4 py-1.5 shadow-sm" role="status">
+                <span class="text-xs text-[#0f766e] pixel-font font-bold">완주!</span>
+                <span id="finish-date-display" class="text-xs text-[#92400e] font-mono font-bold">2026. 11. 17.</span>
             </div>
 
             <!-- INSTAGRAM SHARE CARD (CANVAS & ACCESSIBLE FALLBACK) -->
-            <div class="pixel-box bg-[#2a1329] p-3.5 sm:p-4 w-full max-w-md mb-5 flex flex-col items-center" role="region" aria-label="인스타그램 완주 인증 카드">
-                <span class="text-xs text-pink-300 mb-2 font-mono">📸 INSTAGRAM STORY / POST CARD</span>
+            <div class="pixel-box bg-[#fffbeb] p-3.5 sm:p-4 w-full max-w-md mb-5 flex flex-col items-center" role="region" aria-label="인스타그램 완주 인증 카드">
+                <span class="text-xs text-[#b45309] font-bold mb-2 font-mono">📸 INSTAGRAM STORY / POST CARD</span>
                 
-                <div class="border-4 border-white bg-[#1a0c19] shadow-lg max-w-full">
+                <div class="border-4 border-[#78350f] bg-[#fef3c7] shadow-lg max-w-full">
                     <canvas id="insta-card-canvas" width="480" height="480" class="w-full max-w-[320px] sm:max-w-[340px] h-auto block" role="img" aria-label="가을 산책로 점프 퀴즈 완주 인증 카드 이미지"></canvas>
                 </div>
                 
                 <!-- Screen Reader Accessible Fallback Content -->
                 <div id="sr-card-summary" class="sr-only"></div>
 
-                <p class="text-[11px] text-gray-300 mt-2" id="t-insta-tip">
+                <p class="text-[11px] text-[#78350f] font-medium mt-2" id="t-insta-tip">
                     * 아래 버튼을 누르면 인스타그램 스토리나 피드에 올릴 수 있는 고화질 카드 이미지가 저장됩니다!
                 </p>
             </div>
 
             <!-- Action Buttons -->
             <div class="flex flex-wrap gap-2.5 sm:gap-3 justify-center w-full max-w-md">
-                <button onclick="downloadInstaCard()" class="pixel-btn bg-[#00f5d4] hover:bg-[#00d8bc] text-black font-bold px-6 py-3 text-xs sm:text-sm flex items-center justify-center gap-2 flex-1 sm:flex-initial" aria-label="인스타그램 인증 카드 이미지 다운로드">
+                <button onclick="downloadInstaCard()" class="pixel-btn bg-[#34d399] hover:bg-[#10b981] text-[#064e3b] font-bold px-6 py-3 text-xs sm:text-sm flex items-center justify-center gap-2 flex-1 sm:flex-initial" aria-label="인스타그램 인증 카드 이미지 다운로드">
                     <span aria-hidden="true">💾</span> <span id="t-save-card">인스타용 이미지 저장</span>
                 </button>
-                <button onclick="resetGame()" class="pixel-btn bg-[#ffbe0b] hover:bg-[#e0a800] text-black font-bold px-6 py-3 text-xs sm:text-sm flex items-center justify-center gap-1.5 flex-1 sm:flex-initial" aria-label="처음부터 다른 캐릭터나 주제로 다시 시작하기">
+                <button onclick="resetGame()" class="pixel-btn bg-[#fbbf24] hover:bg-[#f59e0b] text-[#451a03] font-bold px-6 py-3 text-xs sm:text-sm flex items-center justify-center gap-1.5 flex-1 sm:flex-initial" aria-label="처음부터 다른 캐릭터나 주제로 다시 시작하기">
                     <span aria-hidden="true">🔄</span> <span id="t-retry">다른 캐릭터 / 주제로 다시하기</span>
                 </button>
             </div>
@@ -414,7 +415,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#1b0819] border-t-2 border-purple-900 p-2.5 text-center text-[10px] sm:text-[11px] text-gray-400 z-30">
+    <footer class="bg-[#fffbeb]/90 border-t-2 border-[#d97706] p-2.5 text-center text-[10px] sm:text-[11px] text-[#78350f] font-bold z-30">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1">
             <span>성균관대학교 모꼬지 X 이퀄(EQUAL) X 정정헌</span>
             <span>단풍과 은행잎 픽셀 어드벤처 &copy; 2026</span>
@@ -439,12 +440,12 @@
             ko: {
                 navTitle: "가을 산책로 점프 퀴즈",
                 startTitle: "모꼬지 X 이퀄 X 정정헌과 함께 하는 가을 산책",
-                startSub: "🍁 단풍나무와 은행잎 산책로를 퐁퐁 뛰어오르는 픽셀 점프 퀴즈 어드벤처 🍂",
+                startSub: "🍂 은행잎과 단풍나무 산책로를 퐁퐁 뛰어오르는 픽셀 점프 퀴즈 어드벤처 🍁",
                 startDesc: "장애, 여성, 교차성의 가치와 역사를 배우며 가을 디딤돌을 밟고 정상에 도전하세요!",
                 startBtn: "산책 시작하기 (START) ▶",
                 backStart: "처음 화면으로",
                 chooseMate: "산책메이트 캐릭터 선택",
-                chooseDesc: "단풍나무와 은행잎 길을 퐁퐁 뛰어오를 친구를 골라보세요!",
+                chooseDesc: "은행잎과 단풍나무 길을 퐁퐁 뛰어오를 친구를 골라보세요!",
                 nextStep: "주제 선택하기 ▶",
                 chooseTopic: "도전할 퀴즈 주제 선택",
                 topicDesc: "풀고 싶은 영역을 선택하면 인권 상식 및 역사 O/X 퀴즈 3문제가 시작됩니다!",
@@ -456,23 +457,23 @@
                 catInterDesc: "정체성 포용 & 교차성 이론 역사 3문제",
                 backChar: "캐릭터 다시 고르기",
                 nextQuiz: "다음 단계로 이동 ▶",
-                congratsTitle: "팡파레!! 완주 축하합니다!",
+                congratsTitle: "WIN!",
                 saveCard: "인스타용 이미지 저장",
                 retry: "다른 캐릭터 / 주제로 다시하기",
                 instaTip: "* 아래 버튼을 누르면 인스타그램 스토리나 피드에 올릴 수 있는 고화질 카드 이미지가 저장됩니다!",
-                jumpHint: "문제를 맞히면 위쪽 단풍 디딤돌로 퐁퐁 뛰어오릅니다!",
-                correctFeedback: "정답입니다! 단풍 발판으로 높이 점프! (+100점)",
+                jumpHint: "문제를 맞히면 위쪽 은행잎 디딤돌로 퐁퐁 뛰어오릅니다!",
+                correctFeedback: "정답입니다! 은행잎 발판으로 높이 점프! (+100점)",
                 wrongFeedback: "아쉽지만 정답을 확인하고 다음 발판으로 전진합니다!"
             },
             en: {
                 navTitle: "Autumn Trail Jump Quiz",
                 startTitle: "Autumn Walk with Mokkoji X Equal X Jeongjeongheon",
-                startSub: "🍁 Pixel Jump Quiz Adventure leaping along Maple & Ginkgo trails 🍂",
+                startSub: "🍂 Pixel Jump Quiz Adventure leaping along Ginkgo & Maple trails 🍁",
                 startDesc: "Learn values and histories of disability rights, gender equality, and intersectionality!",
                 startBtn: "Start the Walk (START) ▶",
                 backStart: "Back to Title",
                 chooseMate: "Choose Your Trail Mate",
-                chooseDesc: "Pick a friend to jump up the maple and ginkgo steps!",
+                chooseDesc: "Pick a friend to jump up the ginkgo and maple steps!",
                 nextStep: "Choose Topic ▶",
                 chooseTopic: "Select a Quiz Topic",
                 topicDesc: "Select a topic to begin 3 true/false (O/X) questions on rights and history!",
@@ -484,23 +485,23 @@
                 catInterDesc: "Inclusion & intersectionality origins (3 Questions)",
                 backChar: "Change Character",
                 nextQuiz: "Next Step ▶",
-                congratsTitle: "FANFARE!! Journey Complete!",
+                congratsTitle: "WIN!",
                 saveCard: "Download Instagram Card",
                 retry: "Play Again With Another Mate",
                 instaTip: "* Tap the button below to download a high-res card for your Instagram story/post!",
-                jumpHint: "Get it right to jump high onto the autumn ginkgo platform!",
+                jumpHint: "Get it right to jump high onto the golden ginkgo platform!",
                 correctFeedback: "Correct! A high jump onto the platform! (+100 PTS)",
                 wrongFeedback: "Nice try! Let's check the answer and leap ahead!"
             },
             zh: {
                 navTitle: "秋日步道跳跃问答",
                 startTitle: "与 Mokkoji X Equal X 贞正宪 一起秋日漫步",
-                startSub: "🍁 穿行在枫叶与银杏林间的像素跳跃知识问答 🍂",
+                startSub: "🍂 穿行在银杏与枫叶林间的像素跳跃知识问答 🍁",
                 startDesc: "在秋日石阶上探寻残障权益、性别平等与交叉性的价值与历史！",
                 startBtn: "开始漫步 (START) ▶",
                 backStart: "返回主页",
                 chooseMate: "选择你的漫步伙伴",
-                chooseDesc: "挑选一位可爱的小伙伴一起跃上枫叶与银杏台阶！",
+                chooseDesc: "挑选一位可爱的小伙伴一起跃上银杏与枫叶台阶！",
                 nextStep: "选择主题 ▶",
                 chooseTopic: "选择挑战主题",
                 topicDesc: "选择你感兴趣的领域，开启3道关于人权常识与历史的○×问答！",
@@ -512,11 +513,11 @@
                 catInterDesc: "多元认同包容与交叉性理论历史 (3题)",
                 backChar: "重新选择伙伴",
                 nextQuiz: "进入下一关 ▶",
-                congratsTitle: "凯旋号角！！恭喜成功通关！",
+                congratsTitle: "WIN!",
                 saveCard: "保存 Instagram 分享图",
                 retry: "换个伙伴 / 主题再试一次",
                 instaTip: "* 点击下方按钮即可下载适合分享至社交平台的高清纪念卡片！",
-                jumpHint: "答对即可轻快跃上高处的秋日枫叶平台！",
+                jumpHint: "答对即可轻快跃上高处的金色银杏平台！",
                 correctFeedback: "回答正确！轻快跃上下一个金色台阶！ (+100分)",
                 wrongFeedback: "虽有些遗憾，查看解析后继续踏上台阶吧！"
             }
@@ -532,59 +533,20 @@
             return `${y}. ${m}. ${d}.`;
         }
 
-        // --- 8 CHARACTERS MAPPING (Refreshed Yuljeon & Myeongryun, Studious Yeji) ---
+        // --- 8 CHARACTERS MAPPING (Gender swapped Yuljeon & Myeongryun, Exchange Student Yeji) ---
         const characters = [
             {
                 id: 'yuljeon',
                 name: '율전이',
-                role: {
-                    ko: '초록 과잠의 활기찬 학우 (남성)',
-                    en: 'Varsity Jacket Campus Explorer (Male)',
-                    zh: '身穿绿色校服夹克的元气学子 (男)'
-                },
-                desc: {
-                    ko: '성균관대 초록빛 야구점퍼(과잠)를 입고 율전 잔디밭과 은행나무 길을 경쾌하게 누비는 소년!',
-                    en: 'Wearing a dark green SKKU varsity jacket, happily exploring the campus lawns and trails!',
-                    zh: '身着成均馆经典深绿棒球服校服，在银杏道与草坪间充满活力奔跑的男生！'
-                },
-                stats: {
-                    ko: ['과잠 착용감: 편안함 MAX', '캠퍼스 발걸음: 999보/분', '단풍 탐구력: SSS'],
-                    en: ['Varsity Comfort: MAX', 'Campus Steps: 999/min', 'Autumn Curiosity: SSS'],
-                    zh: ['校服舒适度: MAX', '漫步活力: 999步/分', '秋日探索度: SSS']
-                },
-                color: '#15803d',
-                hasPrideFlag: false,
-                svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="60" height="60" class="pixel-art" role="img" aria-label="율전이 캐릭터 도트 이미지">
-                    <rect x="10" y="3" width="12" height="4" fill="#451a03"/>
-                    <rect x="8" y="5" width="16" height="4" fill="#451a03"/>
-                    <rect x="10" y="7" width="12" height="7" fill="#fed7aa"/>
-                    <rect x="12" y="9" width="2" height="2" fill="#1e1e1e"/>
-                    <rect x="18" y="9" width="2" height="2" fill="#1e1e1e"/>
-                    <rect x="14" y="12" width="4" height="1" fill="#ea580c"/>
-                    <rect x="10" y="14" width="12" height="9" fill="#166534"/>
-                    <rect x="8" y="14" width="2" height="8" fill="#f8fafc"/>
-                    <rect x="22" y="14" width="2" height="8" fill="#f8fafc"/>
-                    <rect x="15" y="14" width="2" height="9" fill="#ffffff"/>
-                    <rect x="15" y="16" width="2" height="1" fill="#facc15"/>
-                    <rect x="15" y="19" width="2" height="1" fill="#facc15"/>
-                    <rect x="10" y="23" width="5" height="6" fill="#1e3a8a"/>
-                    <rect x="17" y="23" width="5" height="6" fill="#1e3a8a"/>
-                    <rect x="9" y="28" width="6" height="2" fill="#e2e8f0"/>
-                    <rect x="17" y="28" width="6" height="2" fill="#e2e8f0"/>
-                </svg>`
-            },
-            {
-                id: 'myeongryun',
-                name: '명륜이',
                 role: {
                     ko: '은행잎 베레모의 감성 학우 (여성)',
                     en: 'Ginkgo Beret Cozy Student (Female)',
                     zh: '头戴银杏黄贝雷帽的温婉学子 (女)'
                 },
                 desc: {
-                    ko: '황금빛 은행잎 베레모와 단정한 베이지 더플코트를 입고 문묘의 가을을 기록하는 소녀!',
-                    en: 'Wearing a golden gingko beret and cozy coat, capturing autumn memories by historic trees!',
-                    zh: '戴着金黄银杏色贝雷帽，身穿暖暖的浅驼色风衣，用画笔记录文庙秋色的女生！'
+                    ko: '황금빛 은행잎 베레모와 단정한 베이지 더플코트를 입고 캠퍼스의 가을을 기록하는 소녀!',
+                    en: 'Wearing a golden ginkgo beret and cozy coat, capturing autumn memories by historic trees!',
+                    zh: '戴着金黄银杏色贝雷帽，身穿暖暖的浅驼色风衣，用画笔记录校园秋色的女生！'
                 },
                 stats: {
                     ko: ['베레모 스타일: 100점', '가을 감성 농도: MAX', '은행잎 책갈피: 99장'],
@@ -593,7 +555,7 @@
                 },
                 color: '#ca8a04',
                 hasPrideFlag: false,
-                svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="60" height="60" class="pixel-art" role="img" aria-label="명륜이 캐릭터 도트 이미지">
+                svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="60" height="60" class="pixel-art" role="img" aria-label="율전이 캐릭터 도트 이미지">
                     <rect x="9" y="2" width="14" height="4" fill="#eab308"/>
                     <rect x="8" y="4" width="16" height="2" fill="#ca8a04"/>
                     <rect x="15" y="1" width="2" height="2" fill="#a16207"/>
@@ -610,6 +572,45 @@
                     <rect x="10" y="23" width="12" height="4" fill="#475569"/>
                     <rect x="11" y="27" width="3" height="3" fill="#78350f"/>
                     <rect x="18" y="27" width="3" height="3" fill="#78350f"/>
+                </svg>`
+            },
+            {
+                id: 'myeongryun',
+                name: '명륜이',
+                role: {
+                    ko: '초록 과잠의 활기찬 학우 (남성)',
+                    en: 'Varsity Jacket Campus Explorer (Male)',
+                    zh: '身穿绿色校服夹克的元气学子 (男)'
+                },
+                desc: {
+                    ko: '성균관대 초록빛 야구점퍼(과잠)를 입고 명륜당 은행나무 길을 경쾌하게 누비는 소년!',
+                    en: 'Wearing a dark green SKKU varsity jacket, happily exploring the campus ginkgo trails!',
+                    zh: '身着成均馆经典深绿棒球服校服，在银杏道与草坪间充满活力奔跑的男生！'
+                },
+                stats: {
+                    ko: ['과잠 착용감: 편안함 MAX', '캠퍼스 발걸음: 999보/분', '단풍 탐구력: SSS'],
+                    en: ['Varsity Comfort: MAX', 'Campus Steps: 999/min', 'Autumn Curiosity: SSS'],
+                    zh: ['校服舒适度: MAX', '漫步活力: 999步/分', '秋日探索度: SSS']
+                },
+                color: '#15803d',
+                hasPrideFlag: false,
+                svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="60" height="60" class="pixel-art" role="img" aria-label="명륜이 캐릭터 도트 이미지">
+                    <rect x="10" y="3" width="12" height="4" fill="#451a03"/>
+                    <rect x="8" y="5" width="16" height="4" fill="#451a03"/>
+                    <rect x="10" y="7" width="12" height="7" fill="#fed7aa"/>
+                    <rect x="12" y="9" width="2" height="2" fill="#1e1e1e"/>
+                    <rect x="18" y="9" width="2" height="2" fill="#1e1e1e"/>
+                    <rect x="14" y="12" width="4" height="1" fill="#ea580c"/>
+                    <rect x="10" y="14" width="12" height="9" fill="#166534"/>
+                    <rect x="8" y="14" width="2" height="8" fill="#f8fafc"/>
+                    <rect x="22" y="14" width="2" height="8" fill="#f8fafc"/>
+                    <rect x="15" y="14" width="2" height="9" fill="#ffffff"/>
+                    <rect x="15" y="16" width="2" height="1" fill="#facc15"/>
+                    <rect x="15" y="19" width="2" height="1" fill="#facc15"/>
+                    <rect x="10" y="23" width="5" height="6" fill="#1e3a8a"/>
+                    <rect x="17" y="23" width="5" height="6" fill="#1e3a8a"/>
+                    <rect x="9" y="28" width="6" height="2" fill="#e2e8f0"/>
+                    <rect x="17" y="28" width="6" height="2" fill="#e2e8f0"/>
                 </svg>`
             },
             {
@@ -653,9 +654,9 @@
                 id: 'yeji',
                 name: '예지',
                 role: {
-                    ko: '성실한 교환학생 (흑인)',
-                    en: 'Studious Exchange Student (Black)',
-                    zh: '勤奋求学的交换生 (黑人)'
+                    ko: '성실한 교환학생 (교환학생 친구)',
+                    en: 'Studious Exchange Student',
+                    zh: '勤奋求学的交换生朋友'
                 },
                 desc: {
                     ko: '캠퍼스 중앙도서관과 은행나무 산책로를 오가며 열정적으로 전공을 탐구하는 모범 교환학생 친구!',
@@ -715,10 +716,10 @@
                     <rect x="17" y="9" width="2" height="2" fill="#1e1e1e"/>
                     <rect x="11" y="13" width="10" height="7" fill="#0284c7"/>
                     <rect x="8" y="16" width="3" height="8" fill="#94a3b8"/>
-                    <circle cx="16" cy="23" r="7" fill="none" stroke="#ffffff" stroke-width="2"/>
+                    <circle cx="16" cy="23" r="7" fill="none" stroke="#451a03" stroke-width="2"/>
                     <circle cx="16" cy="23" r="2" fill="#facc15"/>
-                    <line x1="16" y1="16" x2="16" y2="30" stroke="#cbd5e1" stroke-width="1"/>
-                    <line x1="9" y1="23" x2="23" y2="23" stroke="#cbd5e1" stroke-width="1"/>
+                    <line x1="16" y1="16" x2="16" y2="30" stroke="#78350f" stroke-width="1"/>
+                    <line x1="9" y1="23" x2="23" y2="23" stroke="#78350f" stroke-width="1"/>
                 </svg>`
             },
             {
@@ -1062,16 +1063,16 @@
             if (soundEnabled) audio.playClick();
         }
 
-        // --- LEAF RAIN GENERATOR ---
+        // --- GINKGO LEAF RAIN GENERATOR ---
         function initLeafRain() {
             const container = document.getElementById('leaves-container');
-            const leafIcons = ['🍁', '🍂', '🍃', '✨'];
-            for (let i = 0; i < 18; i++) {
+            const ginkgoSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="#facc15" stroke="#ca8a04" stroke-width="1.5"><path d="M12 21v-5M12 16C7 16 3 12 4 7c2 1 4 2 6 1 1-2 1-4 2-5 1 1 1 3 2 5 2 1 4 0 6-1 1 5-3 9-8 9z"/></svg>`;
+            for (let i = 0; i < 20; i++) {
                 const leaf = document.createElement('div');
                 leaf.className = 'falling-leaf';
-                leaf.textContent = leafIcons[Math.floor(Math.random() * leafIcons.length)];
+                leaf.innerHTML = i % 3 === 0 ? '🍂' : ginkgoSvg;
                 leaf.style.left = `${Math.random() * 96}vw`;
-                leaf.style.fontSize = `${Math.random() * 12 + 12}px`;
+                leaf.style.fontSize = `${Math.random() * 10 + 14}px`;
                 leaf.style.animationDuration = `${Math.random() * 6 + 5}s`;
                 leaf.style.animationDelay = `${Math.random() * 5}s`;
                 container.appendChild(leaf);
@@ -1183,7 +1184,7 @@
                 card.role = 'radio';
                 card.setAttribute('aria-checked', isSelected ? 'true' : 'false');
                 card.className = `pixel-box p-2 sm:p-2.5 flex flex-col items-center text-center cursor-pointer transition w-full ${
-                    isSelected ? 'bg-[#5c2049] border-[#00f5d4] scale-102' : 'bg-[#2e152a] hover:bg-[#3d1c38]'
+                    isSelected ? 'bg-[#fde68a] border-[#ea580c] scale-102' : 'bg-[#fffbeb] hover:bg-[#fef3c7]'
                 }`;
                 card.onclick = () => selectCharacter(c.id);
 
@@ -1197,13 +1198,13 @@
                 card.setAttribute('aria-label', `${c.name}, ${roleText}${isSelected ? ', 현재 선택됨' : ''}`);
 
                 card.innerHTML = `
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#411b3b] border border-white flex items-center justify-center p-1 mb-1 rounded relative" aria-hidden="true">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#fef3c7] border border-[#78350f] flex items-center justify-center p-1 mb-1 rounded relative" aria-hidden="true">
                         ${c.svg}
                     </div>
-                    <div class="pixel-font text-xs text-yellow-300 font-bold flex items-center justify-center">
+                    <div class="pixel-font text-xs text-[#b45309] font-bold flex items-center justify-center">
                         ${c.name} ${badge}
                     </div>
-                    <div class="text-[9px] sm:text-[10px] text-pink-200 mt-0.5 truncate w-full">${roleText}</div>
+                    <div class="text-[9px] sm:text-[10px] text-[#78350f] font-bold mt-0.5 truncate w-full">${roleText}</div>
                 `;
                 grid.appendChild(card);
             });
@@ -1284,8 +1285,8 @@
                             <rect y="5.2" width="24" height="2.6" fill="#ffed00"/>
                             <rect y="7.8" width="24" height="2.6" fill="#008026"/>
                             <rect y="10.4" width="24" height="2.6" fill="#004dff"/>
-                            <rect y="13" width="24" height="3" fill="#750787"/>
-                            <line x1="0" y1="0" x2="0" y2="18" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="0" y="13" width="24" height="3" fill="#750787"/>
+                            <line x1="0" y1="0" x2="0" y2="18" stroke="#451a03" stroke-width="2"/>
                         </svg>
                     </div>
                 `;
@@ -1371,12 +1372,12 @@
                 score += 100;
                 document.getElementById('game-score').textContent = score;
                 audio.playCorrect();
-                verdictEl.className = 'pixel-font text-xs sm:text-sm font-bold mb-1.5 text-[#00f5d4]';
+                verdictEl.className = 'pixel-font text-xs sm:text-sm font-bold mb-1.5 text-[#047857]';
                 verdictEl.textContent = `⭕ ${dict.correctFeedback}`;
                 announcement = `정답입니다! 100점을 획득했습니다. 발판으로 뛰어올랐습니다. `;
             } else {
                 audio.playWrong();
-                verdictEl.className = 'pixel-font text-xs sm:text-sm font-bold mb-1.5 text-[#ff70a6]';
+                verdictEl.className = 'pixel-font text-xs sm:text-sm font-bold mb-1.5 text-[#c2410c]';
                 verdictEl.textContent = `❌ ${dict.wrongFeedback}`;
                 announcement = `아쉽지만 틀렸습니다. 정답을 확인하고 다음 발판으로 전진합니다. `;
             }
@@ -1408,7 +1409,7 @@
             }
         }
 
-        // --- VICTORY CELEBRATION (팡파레) & INSTAGRAM CARD GENERATION ---
+        // --- VICTORY CELEBRATION (WIN!) & INSTAGRAM CARD GENERATION ---
         function triggerVictory() {
             audio.playFanfare();
             document.getElementById('screen-game').classList.add('hidden');
@@ -1424,52 +1425,81 @@
             const congratsHeading = document.getElementById('t-congrats-title');
             if (congratsHeading) congratsHeading.focus();
 
-            startConfetti();
+            startGinkgoRain();
             generateInstagramCard();
 
-            srAnnounce(`축하합니다! 팡파레! 가을 산책로 점프 퀴즈를 모두 완주했습니다! 최종 스코어 ${score}점 만점입니다.`);
+            srAnnounce(`축하합니다! WIN! 가을 산책로 점프 퀴즈를 모두 완주했습니다! 최종 스코어 ${score}점 만점입니다.`);
         }
 
-        // Optimized Confetti for Mobile & Accessibility
-        function startConfetti() {
+        // Golden Ginkgo Leaves Celebration Canvas Animation
+        function startGinkgoRain() {
             const canvas = document.getElementById('confetti-canvas');
             canvas.classList.remove('hidden');
             const ctx = canvas.getContext('2d');
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            const particles = [];
-            const colors = ['#ff006e', '#ffbe0b', '#00f5d4', '#8338ec', '#3a86ff', '#fb5607', '#ffffff'];
+            const leaves = [];
+            const ginkgoPalette = ['#facc15', '#eab308', '#fde047', '#f59e0b', '#fbbf24'];
 
-            for (let i = 0; i < 60; i++) {
-                particles.push({
+            for (let i = 0; i < 65; i++) {
+                leaves.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height - canvas.height,
-                    size: Math.random() * 6 + 3,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    speedY: Math.random() * 3 + 1.5,
-                    speedX: Math.random() * 2 - 1,
+                    size: Math.random() * 10 + 10,
+                    color: ginkgoPalette[Math.floor(Math.random() * ginkgoPalette.length)],
+                    speedY: Math.random() * 2.5 + 1.5,
+                    swayAmp: Math.random() * 1.5 + 0.5,
+                    swayFreq: Math.random() * 0.04 + 0.02,
+                    phase: Math.random() * Math.PI * 2,
                     rot: Math.random() * 360,
-                    rotSpeed: Math.random() * 4 - 2
+                    rotSpeed: Math.random() * 3 - 1.5
                 });
             }
 
+            function drawGinkgoLeaf(ctx, size, color) {
+                // Stem
+                ctx.strokeStyle = '#92400e';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(0, 2);
+                ctx.lineTo(0, size * 0.95);
+                ctx.stroke();
+
+                // Fan-shaped bilobed ginkgo blade
+                ctx.fillStyle = color;
+                ctx.strokeStyle = '#b45309';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(0, 3);
+                ctx.quadraticCurveTo(-size * 0.9, -size * 0.1, -size * 0.75, -size * 0.65);
+                ctx.quadraticCurveTo(-size * 0.35, -size * 0.9, -size * 0.08, -size * 0.65);
+                ctx.lineTo(0, -size * 0.42);
+                ctx.lineTo(size * 0.08, -size * 0.65);
+                ctx.quadraticCurveTo(size * 0.35, -size * 0.9, size * 0.75, -size * 0.65);
+                ctx.quadraticCurveTo(size * 0.9, -size * 0.1, 0, 3);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+            }
+
             let animId;
+            let frame = 0;
             function render() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => {
+                frame++;
+                leaves.forEach(p => {
                     ctx.save();
                     ctx.translate(p.x, p.y);
                     ctx.rotate((p.rot * Math.PI) / 180);
-                    ctx.fillStyle = p.color;
-                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                    drawGinkgoLeaf(ctx, p.size, p.color);
                     ctx.restore();
 
                     p.y += p.speedY;
-                    p.x += p.speedX;
+                    p.x += Math.sin(frame * p.swayFreq + p.phase) * p.swayAmp;
                     p.rot += p.rotSpeed;
 
-                    if (p.y > canvas.height) {
+                    if (p.y > canvas.height + 20) {
                         p.y = -20;
                         p.x = Math.random() * canvas.width;
                     }
@@ -1482,10 +1512,10 @@
                 cancelAnimationFrame(animId);
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 canvas.classList.add('hidden');
-            }, 4500);
+            }, 5000);
         }
 
-        // --- DRAW INSTAGRAM SHAREABLE CARD (모꼬지 X 이퀄 X 정정헌) ---
+        // --- DRAW INSTAGRAM SHAREABLE CARD (BRIGHT AUTUMN THEME) ---
         function generateInstagramCard() {
             const canvas = document.getElementById('insta-card-canvas');
             const ctx = canvas.getContext('2d');
@@ -1495,37 +1525,37 @@
 
             ctx.imageSmoothingEnabled = false;
 
-            // Background Autumn Deep Gradient
+            // Bright Sunny Autumn Background Gradient
             const grad = ctx.createLinearGradient(0, 0, 0, h);
-            grad.addColorStop(0, '#2d112d');
-            grad.addColorStop(0.4, '#4a153b');
-            grad.addColorStop(1, '#1b081a');
+            grad.addColorStop(0, '#fffbeb');
+            grad.addColorStop(0.5, '#fef3c7');
+            grad.addColorStop(1, '#fde68a');
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, w, h);
 
             // Double Pixel Retro Border
-            ctx.strokeStyle = '#ffffff';
+            ctx.strokeStyle = '#78350f';
             ctx.lineWidth = 6;
             ctx.strokeRect(6, 6, w - 12, h - 12);
 
-            ctx.strokeStyle = '#ffbe0b';
+            ctx.strokeStyle = '#d97706';
             ctx.lineWidth = 3;
             ctx.strokeRect(14, 14, w - 28, h - 28);
 
             // Corner Autumn Icons
             ctx.font = '22px sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('🍁', 36, 42);
-            ctx.fillText('🍂', w - 36, 42);
-            ctx.fillText('🌕', 36, h - 26);
-            ctx.fillText('🍁', w - 36, h - 26);
+            ctx.fillText('🍂', 36, 42);
+            ctx.fillText('🍁', w - 36, 42);
+            ctx.fillText('☀️', 36, h - 26);
+            ctx.fillText('🍂', w - 36, h - 26);
 
             // Top Header: Title & Collaborative Credit ('모꼬지 X 이퀄 X 정정헌' 순서)
-            ctx.fillStyle = '#ffbe0b';
+            ctx.fillStyle = '#b45309';
             ctx.font = 'bold 18px DungGeunMo, sans-serif';
             ctx.fillText('단풍·은행 산책로 퀴즈 완주 인증서', w / 2, 45);
 
-            ctx.fillStyle = '#00f5d4';
+            ctx.fillStyle = '#0f766e';
             ctx.font = 'bold 12px DungGeunMo, sans-serif';
             ctx.fillText('★ 성균관대학교 모꼬지 X 이퀄 X 정정헌 ★', w / 2, 68);
 
@@ -1535,27 +1565,27 @@
             const boxW = w - 70;
             const boxH = 265;
 
-            ctx.fillStyle = '#391433';
+            ctx.fillStyle = '#ffffff';
             ctx.fillRect(boxX, boxY, boxW, boxH);
-            ctx.strokeStyle = '#ffbe0b';
+            ctx.strokeStyle = '#d97706';
             ctx.lineWidth = 3;
             ctx.strokeRect(boxX, boxY, boxW, boxH);
 
             // Corner Screws
-            ctx.fillStyle = '#ffffff';
+            ctx.fillStyle = '#78350f';
             ctx.fillRect(boxX + 4, boxY + 4, 6, 6);
             ctx.fillRect(boxX + boxW - 10, boxY + 4, 6, 6);
             ctx.fillRect(boxX + 4, boxY + boxH - 10, 6, 6);
             ctx.fillRect(boxX + boxW - 10, boxY + boxH - 10, 6, 6);
 
-            // BOLD '팡파레 WIN' BANNER
-            ctx.font = '900 30px DungGeunMo, "Press Start 2P", sans-serif';
-            ctx.fillStyle = '#000000';
-            ctx.fillText('★ 팡 파 레 ! W I N ★', w / 2 + 2, 122);
-            ctx.fillStyle = '#ff006e';
-            ctx.fillText('★ 팡 파 레 ! W I N ★', w / 2 + 1, 121);
-            ctx.fillStyle = '#ffbe0b';
-            ctx.fillText('★ 팡 파 레 ! W I N ★', w / 2, 120);
+            // BOLD 'WIN!' BANNER
+            ctx.font = '900 32px DungGeunMo, "Press Start 2P", sans-serif';
+            ctx.fillStyle = '#78350f';
+            ctx.fillText('★ W I N ! ★', w / 2 + 2, 122);
+            ctx.fillStyle = '#ea580c';
+            ctx.fillText('★ W I N ! ★', w / 2 + 1, 121);
+            ctx.fillStyle = '#f59e0b';
+            ctx.fillText('★ W I N ! ★', w / 2, 120);
 
             // Gold Podium Base
             const podW = 160;
@@ -1563,13 +1593,13 @@
             const podX = w / 2 - podW / 2;
             const podY = 245;
 
-            ctx.fillStyle = '#d97706';
+            ctx.fillStyle = '#facc15';
             ctx.fillRect(podX, podY, podW, podH);
-            ctx.strokeStyle = '#fef08a';
+            ctx.strokeStyle = '#78350f';
             ctx.lineWidth = 2;
             ctx.strokeRect(podX, podY, podW, podH);
 
-            ctx.fillStyle = '#78350f';
+            ctx.fillStyle = '#451a03';
             ctx.font = 'bold 10px DungGeunMo, sans-serif';
             ctx.fillText('🏆 STAGE CLEAR 🏆', w / 2, podY + 13);
 
@@ -1609,17 +1639,17 @@
                     ctx.fillText('✨', charX - 16, charY + 45);
                 } else {
                     ctx.font = '20px sans-serif';
-                    ctx.fillText('✨', charX - 16, charY + 45);
-                    ctx.fillText('✨', charX + charSize + 16, charY + 45);
+                    ctx.fillText('🍂', charX - 16, charY + 45);
+                    ctx.fillText('🍂', charX + charSize + 16, charY + 45);
                 }
 
                 // Character Name & Identity
-                ctx.fillStyle = '#ffffff';
+                ctx.fillStyle = '#451a03';
                 ctx.font = 'bold 17px DungGeunMo, sans-serif';
                 ctx.fillText(`[ ${selectedCharacter.name} ]`, w / 2, 285);
 
-                ctx.fillStyle = '#f472b6';
-                ctx.font = '12px DungGeunMo, sans-serif';
+                ctx.fillStyle = '#be185d';
+                ctx.font = 'bold 12px DungGeunMo, sans-serif';
                 let extraTag = '';
                 if (selectedCharacter.hasPrideFlag) extraTag = ' 🏳️‍🌈';
                 if (selectedCharacter.id === 'yeji') extraTag = ' 📚';
@@ -1630,8 +1660,8 @@
                 ctx.fillText(`${roleStr}${extraTag}`, w / 2, 305);
 
                 // Stats Punchline
-                ctx.fillStyle = '#fde047';
-                ctx.font = '11px DungGeunMo, sans-serif';
+                ctx.fillStyle = '#b45309';
+                ctx.font = 'bold 11px DungGeunMo, sans-serif';
                 const statStr = (selectedCharacter.stats[currentLang] || selectedCharacter.stats.ko)[0];
                 ctx.fillText(`★ ${statStr}`, w / 2, 325);
 
@@ -1640,30 +1670,30 @@
                 if (currentTopic === 'women') topicLabel = '여성 성평등·노동권 역사';
                 if (currentTopic === 'intersectionality') topicLabel = '교차성 이론·포용의 역사';
 
-                ctx.fillStyle = '#00f5d4';
+                ctx.fillStyle = '#0f766e';
                 ctx.font = 'bold 13px DungGeunMo, sans-serif';
                 ctx.fillText(`도전 코스: ${topicLabel}`, w / 2, 372);
 
-                ctx.fillStyle = '#ffbe0b';
+                ctx.fillStyle = '#9a3412';
                 ctx.font = 'bold 14px DungGeunMo, sans-serif';
                 ctx.fillText(`스코어: ${score}점 만점 (ALL CLEAR!)`, w / 2, 396);
 
                 // Date Box
                 const dateBoxW = 270;
                 const dateBoxH = 26;
-                ctx.fillStyle = '#1b0918';
+                ctx.fillStyle = '#fffbeb';
                 ctx.fillRect(w / 2 - dateBoxW / 2, 412, dateBoxW, dateBoxH);
-                ctx.strokeStyle = '#00f5d4';
+                ctx.strokeStyle = '#78350f';
                 ctx.lineWidth = 2;
                 ctx.strokeRect(w / 2 - dateBoxW / 2, 412, dateBoxW, dateBoxH);
 
-                ctx.fillStyle = '#00f5d4';
+                ctx.fillStyle = '#b45309';
                 ctx.font = 'bold 13px DungGeunMo, sans-serif';
                 ctx.fillText(`★ 완주! ${todayDateStr} ★`, w / 2, 430);
 
-                ctx.fillStyle = '#9ca3af';
-                ctx.font = '11px DungGeunMo, sans-serif';
-                ctx.fillText('#성균관대모꼬지 #이퀄 #정정헌 #가을단풍산책', w / 2, 456);
+                ctx.fillStyle = '#78350f';
+                ctx.font = 'bold 11px DungGeunMo, sans-serif';
+                ctx.fillText('#성균관대모꼬지 #이퀄 #정정헌 #가을은행산책', w / 2, 456);
 
                 // Update Screen Reader Summary
                 const srSummary = document.getElementById('sr-card-summary');
@@ -1674,7 +1704,7 @@
 
             img.onerror = function() {
                 URL.revokeObjectURL(blobUrl);
-                ctx.fillStyle = '#ffffff';
+                ctx.fillStyle = '#451a03';
                 ctx.font = 'bold 16px DungGeunMo, sans-serif';
                 ctx.fillText(`[ ${selectedCharacter.name} ]`, w / 2, 285);
             };
@@ -1689,7 +1719,7 @@
             link.download = `SKKU_Mokkoji_Equal_Trail_${selectedCharacter.name}_Card.png`;
             link.href = canvas.toDataURL('image/png');
             link.click();
-            showModal("인스타 카드 저장 완료!", "이미지가 기기에 다운로드되었습니다. 인스타그램 스토리나 피드에 올리고 친구들과 공유해보세요! 🍁✨");
+            showModal("인스타 카드 저장 완료!", "이미지가 기기에 다운로드되었습니다. 인스타그램 스토리나 피드에 올리고 친구들과 공유해보세요! 🍂✨");
         }
 
         function resetGame() {
